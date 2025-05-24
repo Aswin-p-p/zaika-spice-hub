@@ -34,19 +34,19 @@ const LoginContent = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1 flex items-center justify-center px-4 py-12 bg-gray-50">
-        <Card className="w-full max-w-md">
+      <main className="flex-1 flex items-center justify-center px-4 py-8 sm:py-12 bg-gray-50">
+        <Card className="w-full max-w-sm sm:max-w-md">
           <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-gradient-to-br from-saffron-500 to-chili-500 rounded-full flex items-center justify-center mb-4">
-              <span className="text-white font-bold text-xl">Z</span>
+            <div className="mx-auto w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-saffron-500 to-chili-500 rounded-full flex items-center justify-center mb-4">
+              <span className="text-white font-bold text-lg sm:text-xl">Z</span>
             </div>
-            <CardTitle className="text-2xl font-bold">Welcome Back</CardTitle>
-            <CardDescription>Sign in to your Zaika Spices account</CardDescription>
+            <CardTitle className="text-xl sm:text-2xl font-bold">Welcome Back</CardTitle>
+            <CardDescription className="text-sm sm:text-base">Sign in to your Zaika Spices account</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email" className="text-sm">Email</Label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <Input
@@ -55,13 +55,13 @@ const LoginContent = () => {
                     placeholder="your@email.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
               <div className="space-y-2">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password" className="text-sm">Password</Label>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <Input
@@ -70,17 +70,17 @@ const LoginContent = () => {
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 text-sm sm:text-base"
                     required
                   />
                 </div>
               </div>
               <div className="flex items-center justify-between">
-                <Link to="/forgot-password" className="text-sm text-saffron-600 hover:text-saffron-700">
+                <Link to="/forgot-password" className="text-xs sm:text-sm text-saffron-600 hover:text-saffron-700">
                   Forgot password?
                 </Link>
               </div>
-              <Button type="submit" className="w-full bg-saffron-500 hover:bg-saffron-600" disabled={isLoading}>
+              <Button type="submit" className="w-full bg-saffron-500 hover:bg-saffron-600 text-sm sm:text-base" disabled={isLoading}>
                 {isLoading ? 'Signing in...' : 'Sign In'}
               </Button>
             </form>
@@ -96,7 +96,7 @@ const LoginContent = () => {
             
             <Button 
               variant="outline" 
-              className="w-full" 
+              className="w-full text-sm sm:text-base" 
               onClick={handleGoogleLogin}
             >
               <Chrome className="h-4 w-4 mr-2" />
@@ -104,7 +104,7 @@ const LoginContent = () => {
             </Button>
           </CardContent>
           <CardFooter className="text-center">
-            <p className="text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gray-600">
               Don't have an account?{' '}
               <Link to="/signup" className="text-saffron-600 hover:text-saffron-700 font-medium">
                 Sign up
