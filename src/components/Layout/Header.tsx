@@ -1,9 +1,8 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingCart, Menu, X, Globe, User } from 'lucide-react';
+import { Search, ShoppingCart, Menu, X, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { useCart } from '@/contexts/CartContext';
 import {
   DropdownMenu,
@@ -14,16 +13,15 @@ import {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { language, setLanguage, t } = useLanguage();
   const { totalItems, setIsOpen } = useCart();
 
   const navigationItems = [
-    { key: 'home', href: '/' },
-    { key: 'products', href: '/products' },
-    { key: 'recipes', href: '/recipes' },
-    { key: 'about', href: '/about' },
-    { key: 'blog', href: '/blog' },
-    { key: 'contact', href: '/contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Products', href: '/products' },
+    { name: 'Recipes', href: '/recipes' },
+    { name: 'About', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' },
   ];
 
   return (
@@ -37,7 +35,7 @@ const Header = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-xl font-bold text-gray-900">Zaika Spices</h1>
-              <p className="text-xs text-saffron-600">Authentic • Organic • Homemade</p>
+              <p className="text-xs text-saffron-600">Premium • Organic • Homemade</p>
             </div>
           </Link>
 
@@ -45,13 +43,11 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-8">
             {navigationItems.map((item) => (
               <Link
-                key={item.key}
+                key={item.name}
                 to={item.href}
-                className={`text-gray-700 hover:text-saffron-600 transition-colors font-medium ${
-                  language === 'ml' ? 'malayalam-text' : ''
-                }`}
+                className="text-gray-700 hover:text-saffron-600 transition-colors font-medium"
               >
-                {t(item.key)}
+                {item.name}
               </Link>
             ))}
           </nav>
@@ -63,26 +59,6 @@ const Header = () => {
               <Search className="h-5 w-5" />
             </Button>
 
-            {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm">
-                  <Globe className="h-5 w-5" />
-                  <span className="ml-1 hidden sm:inline">
-                    {language === 'en' ? 'EN' : 'മലയാളം'}
-                  </span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white border border-gray-200">
-                <DropdownMenuItem onClick={() => setLanguage('en')}>
-                  English
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setLanguage('ml')}>
-                  മലയാളം
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
             {/* User Account */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -92,10 +68,10 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white border border-gray-200">
                 <DropdownMenuItem asChild>
-                  <Link to="/login">{t('login')}</Link>
+                  <Link to="/login">Login</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/signup">{t('signup')}</Link>
+                  <Link to="/signup">Sign Up</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -133,14 +109,12 @@ const Header = () => {
             <nav className="flex flex-col space-y-2">
               {navigationItems.map((item) => (
                 <Link
-                  key={item.key}
+                  key={item.name}
                   to={item.href}
-                  className={`text-gray-700 hover:text-saffron-600 transition-colors py-2 px-4 rounded-md hover:bg-gray-50 ${
-                    language === 'ml' ? 'malayalam-text' : ''
-                  }`}
+                  className="text-gray-700 hover:text-saffron-600 transition-colors py-2 px-4 rounded-md hover:bg-gray-50"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t(item.key)}
+                  {item.name}
                 </Link>
               ))}
               <div className="pt-2 border-t border-gray-200 mt-2">
@@ -149,14 +123,14 @@ const Header = () => {
                   className="text-gray-700 hover:text-saffron-600 transition-colors py-2 px-4 rounded-md hover:bg-gray-50 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('login')}
+                  Login
                 </Link>
                 <Link
                   to="/signup"
                   className="text-gray-700 hover:text-saffron-600 transition-colors py-2 px-4 rounded-md hover:bg-gray-50 block"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {t('signup')}
+                  Sign Up
                 </Link>
               </div>
             </nav>
