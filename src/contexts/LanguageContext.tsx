@@ -47,6 +47,32 @@ const translations = {
   customerService: 'Customer Service',
   newsletter: 'Newsletter',
   subscribeNewsletter: 'Subscribe to our newsletter for recipes and offers',
+  
+  // Checkout
+  checkout: 'Checkout',
+  billingAddress: 'Billing Address',
+  paymentMethod: 'Payment Method',
+  placeOrder: 'Place Order',
+  orderSummary: 'Order Summary',
+  subtotal: 'Subtotal',
+  shipping: 'Shipping',
+  tax: 'Tax',
+  total: 'Total',
+  
+  // Form fields
+  firstName: 'First Name',
+  lastName: 'Last Name',
+  email: 'Email Address',
+  phone: 'Phone Number',
+  address: 'Complete Address',
+  city: 'City',
+  state: 'State',
+  pincode: 'PIN Code',
+  
+  // Payment methods
+  creditCard: 'Credit/Debit Card',
+  upiPayment: 'UPI Payment',
+  cashOnDelivery: 'Cash on Delivery',
 };
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
