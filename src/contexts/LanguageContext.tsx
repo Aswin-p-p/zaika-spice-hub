@@ -2,7 +2,7 @@
 import React, { createContext, useContext } from 'react';
 
 interface LanguageContextType {
-  language: 'en';
+  language: 'en' | 'ml';
   t: (key: string) => string;
 }
 
